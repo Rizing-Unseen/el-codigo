@@ -1,0 +1,758 @@
+from discord import guild
+print("cargando modulos")
+import datetime
+import discord
+from discord.ext import commands
+from discord.ext.commands import MissingRequiredArgument, MissingPermissions, has_role
+import random
+
+intents = discord.Intents().all()
+cliente = discord.Client(intents=intents)
+bot = client = commands.Bot(command_prefix='fc!')
+print("Modulos cargados")
+print("cargando comandos ...")
+
+
+@client.command()
+async def ayuda(ctx, *, ayuda=None):
+    if ayuda == None:
+        embed = discord.Embed(title="Comandos de Fehu-chan", url="https://a.com", description="""  
+    Categorias:\n
+
+  > Starscape : te dice quien cosas de starscape\n
+
+  > Relaciones: Informacion de relaciones de fehu\n
+
+  > Info : mas informacion general de fehu\n
+
+  > Otros: Otros comandos\n
+
+  > Prefix:  fc!\n
+  Nestorex x Rizing unseen\n
+
+  Para mas ayuda pon fc! y la categoria\n
+  Hay comandos secretos buscalos\n
+        """, color=discord.Color.blue())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "starscape" or ayuda == "Starscape" or ayuda == "s" or ayuda == "STARSCAPE":
+        embed = discord.Embed(title="Comandos de Fehu-chan", url="https://a.com", description="""  
+            Starscape:\n
+
+          > Minerales:  te dice acerca de los minerales\n
+
+          > Anomalias: te dice acerca de las anomalias\n
+
+          > Aberrations: Te dice acerca de las anomalias planetarias\n
+
+          > Actividades(categoria): Te dice tips y cosas acerca de las actividades basicas de starscape\n
+
+          Nestorex x Rizing unseen\n
+          Hay comandos secretos buscalos\n
+            """, color=discord.Color.blue())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "Actividades" or ayuda == "actividades" or ayuda == "ac":
+        embed = discord.Embed(title="Actividades", url="https://a.com", description="""  \n
+
+                  > Minar:  te dice acerca de la mineria\n
+
+                  > Cazeria: te dice acerca de la cazeria de drones (bcaza para caza de beacons)\n
+
+                  > pirateria: te dice acerca de la pirateria \n
+
+                  > misiones : te dice acerca de las misiones\n
+
+                  > conquista: te dice acerca de la conquista (wp)\n
+                  Nestorex x Rizing unseen\n
+                  Hay comandos secretos buscalos\n
+                    """, color=discord.Color.blue())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "Frases" or ayuda == "frases" or ayuda == "f":
+        embed = discord.Embed(title="Comandos de Fehu-chan", url="https://a.com", description="""  
+            Frases:\n
+
+          > Nestorex: El lider de la faccion \n
+
+          > Amigo_troll: sublider y horny al mismo tiempo(wp)\n
+
+          > Rizing: la mas horny\n
+          Nestorex x Rizing unseen\n
+          Para usar una frase usa fc!user\n
+            """, color=discord.Color.blue())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "relaciones" or ayuda == "Relaciones" or ayuda == "r":
+        embed = discord.Embed(title="Relaciones", url="https://a.com", description="""
+            Relaciones de FEHU\n
+---------
+Aliados: GI - TUS - M-CG - MADC -
+TDC -> [OOFERS - EXO - CRIM - DV - G-E - STU - FE-HU - UGH]
+Vasallo: FICE
+KOS: - ALFA -> [Y facciones alt]
+En guerra: - ALFA -> [Y facciones alt] - HYPE -
+Suspect: - SJ-C - ENVY -
+Nap: SE - NBI - EE - EXI - ECKO - BLOOM - PSC - SICARI -
+En proceso diplomatico: -
+FEHU Apoya a Foralkan\n
+            """, color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/819820792300568579/850568213766733844/FEHU_Relaciones7.png")
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "misiones" or ayuda == "Misiones" or ayuda == "m" or ayuda == "M":
+        embed = discord.Embed(title="Misiones", url="https://a.com", description="""
+            Existen 2 cosas importantes en las misiones el TIER y con quien es.
+            Dependiendo del tier significa mas dificil o menos dificil y la faccion dependiendo cual sea
+            sera mas facil o dara mas dinero 
+            Tier 0 solo misiones para hirax o stratos debido a su facilidad
+            tier 1 misiones para hirax rhino o una nave de ataque como falcon , zenith , sabre o aurora
+            tier 2 misiones para rhino o zenith mk2 sabre o aurora mk2 (recomendable en mk2 )
+            tier 3 misiones para rhino o mamoth , polaris luminar o claymore
+            tier 4 misiones para mamoth o mamoth mk2 , polaris, luminar o claymore (recomiendo empezar a tener un radish)
+            tier 5 misiones para mamoth mk2, zubron o otros haulers warship , luminar mk2 o radix
+            """, color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://images-ext-2.discordapp.net/external/ULSChPxWF6TqfKSRKemSyzd3Yu1duRMU0y6ubpIaJ1s/%3Fsize%3D256/https/cdn.discordapp.com/avatars/490337656727666699/6154f390794c14ce4e62f0bf91d9be7b.png")
+        embed.add_field(name="Segun faccion", value="""
+            Cuando empiezes recomiendo irse por full a por trade union y coresec ya que coresec tiene las misiones faciles porque son contra
+            drones y trade union ya que paga mas aparte los enemigos de trade union son los piratas los cuales sueltan cajas valiossas
+            para syndicate y trade union, syndicate es el que mejor paga pero es una trampa mortal donde viven muchos piratas.
+            tenemos tambien las 3 facciones enemigas foralkan lycentia y kavani.
+            FEHU esta afiliada a foralkan asi que recomiendo afiliarse a foralkan, ambas 3 facciones se odian por lo que debes ayudar
+            solo a 1 o no ayudar a ninguna, ya que para obtener el emblema llamado Galactic Hero necesitas tener las 6 faciones en total en
+            hero por lo que es demaciado dificil tener ese emblema.
+            """, inline=False)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "caza de beacons" or ayuda == "bcaza" or ayuda == "bc" or ayuda == "Caza de beacons" or ayuda == "CAZA DE BEACONS":
+        embed = discord.Embed(title="Caza de beacons", url="https://a.com", description="""
+            La caza de beacons es tan sencilla como obtener un hauler warship o una nave de ataque y buscar escaneando en wilds
+            en las anomalias X buscar por ancient relay o satelites (para mas informacion vease fc!X) , en caso de no encontrar ancient relay
+            buscar en las cajas que tienen dependiendo de la estructura hay mas o menos, usualmente las estructuras con 3 anillos tienen
+            4 cajas el resto no y si encuentras algo parecido a un satelite artificial humano buscar en alguna parte de este un acces panel
+            con un puzle de hackear para obtener un ancient beacon
+            """, color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.add_field(name="Ancient beacon", value="""
+            Una ves tengas un ancient beacon tienes que encontrar la ubicacion de este a base de el spectral class en el mapa,
+            el spectral class permite ver colores para encontrar los beacons, debes buscar forma y colores aunque puede variar el tamaño
+            ya que el beacon lo muestra.
+            """, inline=False)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "anomalias" or ayuda == "Anomalias" or ayuda == "an":
+        embed = discord.Embed(title="Anomalias", url="https://a.com",
+                              description="Las anomalias se encuentran en el sistema usando una scaning probe.",
+                              color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.add_field(name="Anomalias semi-seguras", value="""Las anomalias semiseguras por ahora es el VX y las X
+            las cuales son basicamente un lugar con guardianes desactivados en el caso del VX donde se encuentra el vexnium y en el de las X
+            son lugares los cuales se puede acceder con un ancient beacon y tienen drones antiguos los cuales no tienen escudo
+            y armas kineticas las cuales hacen mas daño al hull por lo que no hacen mucho daño de por si para ser tan faciles siendo 
+            posible matarlos con un aurora mk2""", inline=False)
+        embed.add_field(name="Anomalias seguras", value="""Estas anomalias son anomalias als cuales son de minerales aunque
+        se han avistados drones por bugs  casi nunca o nunca tendran algun drone. Estas anomalias empiezan por la a usualmente aunque 
+         hay otras como los mts whs y cms. Los AT AL AA y AN son anomalias mienras con asteroides, AT o asteroid tiny es un conjunto
+         de asteroides de cualquier mineral del juego en diferentes cantidades mas no tienen el vexnium, AL o asteroid large
+         son un conjunto de 2 o mas ats juntas o bastantes asteroides, los AA o axnit asteroid son los lugares de asteroides
+         solamente de axnite y los ANs o asteroid narcor son un grupo de asteroides de narcor con 2 horas de vida despues de descubiertos
+         siendo entre 3 a 10-11 asteroides pero los mts son anomalias un poco diferentes, estas tienen un monu,ento de nivel 3 y si este
+         no ha sido minado tendra un anillo de rocas prisnite de gellium o reknite o korelite siendo el mas raro el mt de gell.
+         """, inline=True)
+        embed.add_field(name="Whs y Cms", value="""
+        Los whs y los cometas son tambien anomalias seguras siendo el wormhole o wh un lugar para ir a otro sistema, cuando entres
+         a este iras a unos cuantos saltos de distancia desde 7 o 3 hasta 40 ellos tienen un tiempo de vida el cual usualmente
+         es de 48 osea un wh semi estable , con c puedes ver mas informacion y si entiendes ingles puedes saber cuanto tiempo le queda
+         el tiempo esta dicho en "le quedan 48 horas" o le quedan unas cuantas horas o menos de una hora.
+         Los whs colapsan haciendose tan pequeños hasta que dejan de ser visibles y la anomalia se desaparece, ahora los cometas
+         son depositos de hielo en el sistema, el hielo se derrite para generar turrets etc.""", inline=True)
+        embed.add_field(name="Anomalias Inseguras", value="""Estas anomalias son de drones con las cuales puede aparecer desde un drone interceptor
+        hasta 11-10 Elite drone crucier, actualmente son los SP o spice wrecked platform los cuales es una spice platform la cual fue 
+        abandonada o atacada por drones donde hay cargo gratis aunque puede estar drones como un elite deestroyer o un dron interceptor.
+        los battlefield o BF son la anomalia mas comun la cual es una anomalia con wrecks de una batalla donde puedes encontrar
+        armadura o narcor si eres suertudo.
+        los drones hideout o DHs son espacios con estructuras y drones los cuales varian entre elite drone crucier o monton de interceptores
+        acompañados de turrets, pueden aparecer drone hangar entre otras estructuras y mientras estas en el lugar del  DH 
+        trataran de venir drones como refuerzos""", inline=True)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "Minar" or ayuda == "mineria" or ayuda == "Mineria" or ayuda == "minar" or ayuda == "mr":
+        embed = discord.Embed(title="Mineria", url="https://a.com",
+                              description="Siempre lo haras,Casi nadie vive sin ella", color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.add_field(name="Para minar", value="""
+        Necesitas 2 cosas una nave miner como el otter o para warships el miner y un tractor o moverte por el ore
+        Usualmente la gente nueva mina en bantam o los rings de citadel pero para mas eficacia minas en *Secures* para mayor
+        eficiencia al afk mining (ejemplo finorg planet 1 ring) ya que la cantidad y calidad de lso drones es muy baja y en 
+        light version pero si estaras atento puedes minar en contested porque no te disruptean y es lo mismo que insecure
+        tambien puedes en insecure aunque no es recomendable, y wild mining donde puede salirte de todo pero hay muchos drones y 
+        pirates por lo que no es muy seguro aunque pueden salirte depositos y anomalias mejores que cualquier contested o secure,
+        a continuacion te dire 2 metodos de wild mining:""", inline=False)
+        embed.add_field(name="Strip mining", value="""Aunque este metodo sea mas lento que el inteligent mining da mas ores
+         comunes en este se puede elejir 2 maneras o minas todo lo que veas en una anomaly o deposit o solo minas pristine 
+         y los ores""", inline=True)
+        embed.add_field(name="Inteligent mining",
+                        value="Resumiendo solo minas las cosas valiosas osea Narcor, Red narcor y Axnit pristine",
+                        inline=True)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "Piratear" or ayuda == "piratear" or ayuda == "pierat" or ayuda == "p":
+        embed = discord.Embed(title="Piratear", url="https://a.com", description="Arte de matar a otros",
+                              color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.add_field(name="Piratear buscando", value="""Se basa en ransom y busqueda extensiva en wild.
+        Buscas en todos los wilds cercanos a insecure o en cualquier wild total cuando encuentres a alguien puedes
+        pedirle todo el ore luego sus creditos y al final matarlo asi ganas bastante por cada aunque la mayoria hace
+        warplog por lo que sirve solo en randoms o facciones muy nuevas de gente nueva.""", inline=True)
+        embed.add_field(name="Campeando", value="""Se basa en literal esperar en un sistema insecure o wild cerca a citadel
+        por ejemplo: Emas, Stoyd Yxase, Viax terejit, Gatinsir, Muex, Aerlet Y vlasium por lo que por ninguna razon menos morir y piratear
+        debes ir a estos""", inline=True)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "Cazar" or ayuda == "cazar" or ayuda == "cazeria de drones" or ayuda == "cd":
+        await ctx.send("Esta basado en destruir drones , estructuras y flotas.Entre mas rondas o mas generadores(para las estructuras) mejor loot")
+    elif ayuda == "aberrations" or ayuda == "aberraciones" or ayuda == "ab" or ayuda == "Aberraciones":
+        embed = discord.Embed(title="Aberrations", url="https://a.com", description="""Las anomalias en planetas o aberraciones
+        son un tipo especial de anomalias las cuales solo aparecen en planetas usualmente en planetas con anillos 
+        para saber si hay una aberration preciona n y mira en los planeta con scaning level med o suelta una prueba de 
+        escaneo y pasala por todos los planetas y si suena algo y sale un signo de interrogacion conseguiste una aberration
+        ahora para saber que es y poder warpear a esta necesitas soltar una planet probe en el planeta con la aberration.
+        Todos los depositos son seguros menos el de vexnium el cual si empiezas a minar se activaran sus guardianes""",
+                              color=discord.Color.red())
+        embed.set_thumbnail(
+            url="https://media.discordapp.net/attachments/824860905996288011/859099695447539782/fehuchanpaint2.jpg")
+        embed.add_field(name="Las X aberration", value="""Las aberraciones de tipo X o las X son aberraciones usualmente
+        encontradas en planetas sin anillos aunque pueden aparecer en los de anillos tambien que pueden ser entre 5 tipos de
+        estructuras. tenemos la normal la cual es un circulo de "hierro" alrededor con 3 cajas las cuales pueden estar desbloqueadas
+        o bloqueadas que en el caso de que lo esten debes desbloquearlas de una manera con un puzle, el segundo tipo mas comun es
+        los destroyers antiguos los cuales eran hechos de puro hull aunque en esta aberration hay 4 cajas, tenemos la X destruida la
+        cual es un poco rara y contiene entre 4-6 cajas dando un buen loot, tenemos un outpost o algo parecido el cual es muy raro
+        que no he encontrado datos de este y tenemos el ancient satelite relay en este hay un panel dificil de hackear el cual
+        te da un ancient beacon y bueno el resto en fc!bc""", inline=True)
+        embed.add_field(name="Los depositos", value="""
+        Los depositos son asteroides con bastantes minerales de su mismo tipo por ejemplo un deposito de korelite tiene alrededor de 10-7
+        asteroides de korelite entre pristine y superior dando mas de 2000 aunque no se ha medido aunque el deposito mas comun es
+        de reknite siendo muy util tambien existen depositos de todos los mienrales inclyendo el vexnium , en cada mineral mas raro hay menos asteroides 
+        por ejemplo el deposto de narcor o deposito AN tiene entre 3-5 asteroides en cambio el de axnit tiene de 5-7.
+        *los datos aca no se han comprobado*
+        """, inline=True)
+        embed.set_footer(text="Informacion pedida por: {}".format(ctx.author.display_name))
+        await ctx.send(embed=embed)
+    elif ayuda == "info" or ayuda == "Info" or ayuda == "INFO" or ayuda == "i":
+        embed = discord.Embed(title=f"{ctx.guild.name}", description="Fehu el server !Hail FEHU¡",
+                              timestamp=datetime.datetime.utcnow(), color=discord.Color.blue())
+        embed.add_field(name="Server created at", value=f"{ctx.guild.created_at}")
+        embed.add_field(name="Server Owner", value="...")
+        embed.add_field(name="Server Region", value=f"{ctx.guild.region}")
+        embed.add_field(name="Server ID", value=f"{ctx.guild.id}")
+        embed.set_thumbnail(url="https://cdn.discordapp.com/emojis/824131294942199809.png?v=1")
+
+        await ctx.send(embed=embed)
+    else:
+        await ctx.send("No especificaste ninguna ayuda prueba el comando sin la ayuda "
+                       "fc!(comando)")
+    print(f"{(ctx.author.display_name)}  pregunto por {ayuda}")
+
+
+print("ayuda cargada")
+print("cargando frases")
+
+
+@bot.command()
+async def nestorex(ctx):
+    x = random.randint(1, 4)
+    if x == 2:
+        await ctx.send("Azucar colombiana")
+    elif x == 1:
+        await ctx.send("Vamooo Diegoooo")
+    elif x == 3:
+        await ctx.send("Ñ")
+    elif x == 4:
+        await ctx.send("Creador de FEHU")
+    print(f"{(ctx.author.display_name)}  pregunto por nestorex")
+
+
+@bot.command()
+async def rizing(ctx):
+    x = random.randint(1, 4)
+    if x == 2:
+        await ctx.send("A")
+    elif x == 1:
+        await ctx.send("fc!clear 1")
+        await ctx.channel.purge(limit=3)
+    elif x == 3:
+        await ctx.send("{} sapo Triplehijueputa malparido B)".format(ctx.author.name))
+    elif x == 4:
+        await ctx.send("MMM esa verga se viene sola?")
+    print(f"{(ctx.author.display_name)}  pregunto por rizing")
+
+
+@bot.command()
+async def dm(ctx, user: discord.Member, *, message):
+    await ctx.channel.purge(limit=1)
+    await user.send(f"{message}")
+    print(f"{message} dicho por {(ctx.author.display_name)}")
+
+
+print("cargadas ahora cargando kits y vcs")
+
+
+@bot.command()
+async def kits(ctx, *, nave=None):
+    if nave == None:
+        await ctx.send("""naves actuales(Todo hecho por sando):
+        Otter y otter mk2
+        sabre y sabre mk2
+        aurora y aurora mk2
+        zenith y zenith mk2
+        marlin y marlin mk2
+        stratos (no tienen nada)
+        otter y ottermk2
+        koronis
+        parrot
+        luster
+        tresher
+        """)
+    elif nave == "Otter" or nave == "otter":
+        await ctx.send("""Otter de farmeo: En realidad es bastante buen minero para el costo
+
+Rig: Reinforced Armor/ Patcher nanobots
+Focus: Rapid bolt
+targeter: no
+Ability: tractor beam
+
+Requsito de habilidad: 1/5
+PvP: 0/5
+Swarm: 0/5
+Minar: 3/5
+Viaje: 1/5""")
+    elif nave == "sabre" or nave == "Sabre":
+        await ctx.send("""
+        Sabre kamikaze: Oh no los enemigos tienen muchas warship afuera!, iremos con 15 sabres a matarlos y aunque todos muramos no perderemos casi nada pero ellos mucho
+
+Rig: no
+Focus: Heavy bolt
+targeter: no
+ability: no
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 4/5
+PvE: 1/5
+Misiones: 2/5
+Minar: 1/5
+viaje: 1/5
+Sabre de farmeo: no hara mucho pero esta bien para matar algun npc debil siendo principiante
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 2/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 1/5
+
+""")
+    elif nave == "aurora" or nave == "Aurora":
+        await ctx.send("""Aurora de farmeo: no es muy fuerte pero si no puedes comprar anda mejor hara su trabajo
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5
+
+Aurora de viaje: barato y buena vida y velocidad, te deberia servir si te matan cada por el warp lento , y aparte quien te seguiria en esta chatarra?
+
+Rig: Patcher nanobots
+Focus: no
+targeter: no
+
+ability: signal cloak
+
+Requisito de habilidad: 0/5
+PvP: 1/5
+Swarm: 0/5
+PvE: 2/5
+Misiones: 2/5
+Minar: 1/5
+Viaje: 3/5
+""")
+    elif nave == "zenith" or nave == "Zenith":
+        await ctx.send("""Zenith de farmeo: barato e ineficiente, no te saldra muy a cuenta si no sabes usarlo, pero si lo sabes usar, sera mejor ligeramente que los demas
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+Requisito de habilidad: 2/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+Viaje: 2/5
+""")
+    elif nave == "falcon" or nave == "Falcon":
+        await ctx.send("""Falcon de farmeo: Si no estas acostumbrado a la velocidad, no lo uses, no te sale a cuenta sacrificar tanta potencia de fuego y vida por velocidad si no la controlas
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+Requisito de habilidad: 3/5
+PvP: 2/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5
+Falcon de viaje: Es mas rapido que los demas y quien pitos va a gastar 10 minutos en tener kill de falcon?
+
+Rig: Warp Amplifier
+Focus: no
+targeter: no
+ability: signal cloak
+
+Rig: Patcher nanobots
+Focus: no
+targeter: no
+ability: signal cloak
+
+Requisito de habilidad: 0/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 1/5
+Misiones: 2/5
+Minar: 1/5
+Viaje: 3/5
+""")
+    elif nave == "marlin" or nave == "Marlin":
+        await ctx.send("""Marlin de farmeo: No lo uses, es una basura
+
+Rig: Patcher nanobots
+Focus: Rapid bolt
+Targeter: no
+Ability: Tractor beam
+
+Requisito de habilidad: 2/5 (Porque tiene poca vida capo)
+PvP: 0/5
+Swarm: 0/5
+PvE: 0/5
+Misiones: 0/5
+Minar: 2/5
+Viaje: 2/5
+
+Marlin de bait : trolleador cara, soporte para baits
+
+Rig: Ultralight Chassis
+Focus: no
+targeter: no
+Ability: Disruptor
+
+Requisito de habilidad: 3/5
+PvP: 0/5
+Swarm: 2/5 (Solo de soporte)
+PvE: 0/5
+Misiones: 0/5
+Minar: 1/5
+Viaje: 2/5""")
+    elif nave == "stratos" or nave == "startos":
+        await ctx.send("Lamentablemente al ser la inicial no se recomiendan upgrades pero usala como"
+                       "cualquier nave como un falcon o como tu quieras")
+    elif nave == "sabre mk2" or nave == "sabre mkII" or nave == "sabre mkii":
+        await ctx.send("""Sabre MK II de farmeo: Honestamente si ya tienes axnit no se porque usas sabre
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5""")
+    elif nave == "aurora mk2" or nave == "aurora mkII" or nave == "aurora mkii":
+        await ctx.send("""Aurora MK II de farmeo: mejoras gente, MEJORAS!
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5
+
+Aurora MK II de viaje: Solo usar en caso de skill issue en viajes
+
+Rig: patcher nanobots/ warp amplifier
+Focus: no
+targeter: no
+ability: signal cloak
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 2/5
+minar: 1/5
+viaje: 3/5""")
+    elif nave == "falcon mk2" or nave == "falcon mkII" or nave == "falcon mkii":
+        await ctx.send("""Falcon MK II de farmeo: Sin ofender, se basa en la habilidad
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+
+Requisito de habilidad: 3/5
+PvP: 2/5
+Swarm: 2/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5
+
+Falcon MK II de viaje: Supongo quieres ir aun mas rapido
+
+Rig: Warp amplifier/ Patcher nanobots
+Focus:no
+Targeter: no
+ability: signal cloak
+
+
+Requisito de habilidad: 1/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 1/5
+Misiones: 2/5
+minar: 1/5
+viaje: 3/5""")
+    elif nave == "zenith mk2" or nave == "zenith mkII" or nave == "zenith mkii":
+        await ctx.send("""Zenith MK II de farmeo: Si lo usas, considerate una minoria (dea re toxico)
+
+Rig: Patcher Nanobots
+Focus: Heavy/Rapid Bolt
+Targeter: no
+ability: afterburner
+
+
+Requisito de habilidad: 2/5
+PvP: 1/5
+Swarm: 1/5
+PvE: 2/5
+Misiones: 3/5
+minar: 1/5
+viaje: 2/5""")
+    elif nave == "marlin mk2" or nave == "marlin mkII" or nave == "marlin mkii":
+        await ctx.send("""Marlin MK II de farmeo: softly, don't
+
+Rig: Patcher nanobots
+Focus:rapid bolt
+targeter: no
+ability: tractor beam
+
+PvP: 0/5
+Swarm: 0/5
+PvE: 0/5
+Misiones: 0/5
+Minar: 2/5
+Viaje: 2/5""")
+    elif nave == "otter mk2" or nave == "otter mkII" or nave == "otter mkii":
+        await ctx.send("""Otter MK II de farmeo: Camino al honey badger chaval
+
+Rig: Patcher nanobots/Reinforced Hull
+Focus:rapid bolt
+targeter: no
+ability: tractor beam
+
+PvP: 0/5
+Swarm: 0/5
+PvE: 0/5
+Misiones: 0/5
+Minar: 3/5
+Viaje: 1/5""")
+    elif nave == "parrot" or nave == "Parrot":
+        await ctx.send("""a""")
+    print(f"{(ctx.author.display_name)} pregunto por {nave} o las naves")
+
+
+@bot.command(name='join', help='Mete el bot al vc')
+async def join(ctx):
+    if not ctx.message.author.voice:
+        await ctx.send("{} no estas en ningun vc asi que no  me puedo unir Ñ".format(ctx.message.author.name))
+        print(f"{(ctx.author.display_name)} intento meter el bot a un vc sin estar en uno")
+        return
+    else:
+        channel = ctx.message.author.voice.channel
+        print(f"{(ctx.author.display_name)} metio el bot a {channel}")
+    await channel.connect()
+
+
+@bot.command(name='leave', help='saca el bot')
+async def leave(ctx):
+    voice_client = ctx.message.guild.voice_client
+    if voice_client.is_connected():
+        await voice_client.disconnect()
+        print(f"{(ctx.author.display_name)}  saco el bot de {ctx.message.guild.voice_client}")
+    else:
+        await ctx.send("El bot no esta en ningun vc Ñ.")
+        print(f"{(ctx.author.display_name)} intento sacar el bot sin estar en un vc")
+
+
+print("cargando error comands")
+
+
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, MissingPermissions):
+        await ctx.send("No tenes permisos para eso.")
+        print(f"{(ctx.author.display_name)} hiso un intento pero no tenia el suficiente permiso")
+    else:
+        await ctx.send("No entiendo, lo mejor que te puedo decir es error.")
+        print(str(error))
+        print(f"{(ctx.author.display_name)} hiso un error")
+
+
+@client.event
+async def clear_error(ctx, error):
+    if isinstance(error, MissingRequiredArgument):
+        await ctx.send("No le pusiste cantidad")
+        print(f"{(ctx.author.display_name)} hiso clear pero lo hiso mal")
+
+
+print("cargando admin lo anterior ha sido cargado")
+
+
+@client.command()
+@has_role("Staff")
+async def mute(ctx, member: discord.Member):
+    mute = discord.utils.get(guild.roles, name="Muted")
+    await member.add_roles(mute)
+    await ctx.send(f"{ctx.author.display_name} se ha muteado correctamente a {member}")
+    print(f"{ctx.author.display_name} coloco el rol muteado a {member}")
+@client.command()
+@has_role("Staff")
+async def unmute(ctx, member: discord.Member):
+    await member.remove_roles("muted")
+    await ctx.send(f"{ctx.author.display_name} se ha desmuteado correctamente a {member}")
+    print(f"{ctx.author.display_name} coloco el rol muteado a {member}")
+@client.command()
+@has_role("Staff")
+async def arole(ctx, role: discord.Role, member: discord.Member):
+    await member.add_roles(role)
+    await ctx.send(f"{ctx.author.display_name} se ha añadido correctamente el rol")
+    print(f"{ctx.author.display_name} coloco el rol {role} a {member}")
+
+
+@client.command()
+@has_role("Staff")
+async def erole(ctx, role: discord.Role, member: discord.Member):
+    await member.remove_roles(role)
+    await ctx.send(f"{ctx.author.display_name} se ha quitado correctamente el rol")
+    print(f"{ctx.author.display_name} quito el rol {role} a {member}")
+
+
+@client.command()
+@has_role("Staff")
+async def clear(ctx, amount: int):
+    await ctx.send('Borrando ' + str(amount) + ' mensajes espere...')
+    amount = int(amount) + 2
+    await ctx.channel.purge(limit=amount)
+    print(f"{ctx.author.display_name} hiso purge de {amount}")
+
+
+@client.command()
+@has_role("Staff")
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f'Sacado {member.mention}')
+    print(f"{(ctx.author.display_name)} hiso kick a {member.mention}")
+
+
+@client.command()
+@has_role("Staff")
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    await ctx.send(f'Baneado {member.mention}')
+    print(f"{(ctx.author.display_name)} hiso ban a {member.mention}")
+
+
+print("Admin cargado, cargando evento")
+
+
+@bot.command()
+async def nsfw(ctx, nsfw="search", member=None):
+    if ctx.message.channel.is_nsfw():
+        if nsfw == "fuck" or nsfw == "sex" or nsfw == "violar" and not member == None:
+            await ctx.send(f"{ctx.author.display_name} violo a {member}")
+            client.command()
+            embed = discord.Embed(
+                colour=discord.Colour.red(),
+                title="...",
+                description=(f"{ctx.author.name} violo a {member}")
+            )
+
+            embed.set_image(
+                url='https://media.discordapp.net/attachments/726896033660928010/730550619039072256/2dffc2b94e582aba379a0d05acdcecc8.gif')
+
+            await ctx.send(embed=embed)
+        print(f"{ctx.author.display_name} hiso un {nsfw} a {member}")
+    elif not ctx.message.channel.is_nsfw():
+        await ctx.send(f"{ctx.author.display_name} este comando solo es para NSFW Ñ.")
+        print(f"{ctx.author.display_name} intento ... pero lo hiso en un canal donde no se puede")
+
+@bot.command()
+@has_role("Staff")
+async def say(ctx, *, sentence):
+    a = 1
+    await ctx.channel.purge(limit=a)
+    print(f"{ctx.author.display_name} dijo {sentence}")
+    await ctx.send(sentence)
+
+
+@bot.event
+async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="Starscape | fc!ayuda"))
+
+token = 
+Bot.run(token)
